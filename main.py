@@ -27,9 +27,12 @@ def predict():
 
     try:
         model = pickle.load(open("model.pkl", "rb"))
+        print("Get the model from file")
     except:
         dataset_url = "https://raw.githubusercontent.com/apogiatzis/breast-cancer-azure-ml-notebook/master/breast-cancer-data.csv"
         df = pd.read_csv(dataset_url)
+
+        print("Get the model from url")
 
         df['diagnosis']=df['diagnosis'].map({'M':1,'B':0})
 
