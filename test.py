@@ -33,7 +33,7 @@ def cancerPrediction():
         dataset_url = "https://raw.githubusercontent.com/apogiatzis/breast-cancer-azure-ml-notebook/master/breast-cancer-data.csv"
         df = pd.read_csv(dataset_url)
 
-        df['diagnosis']=df['diagnosis'].map({'M':1,'B':0})
+        df['diagnosis'] = df['diagnosis'].map({'M':1,'B':0})
 
         train, test = train_test_split(df, test_size = 0.2)
 
@@ -42,7 +42,7 @@ def cancerPrediction():
         train_X = train[features]
         train_y = train.diagnosis
 
-        model=RandomForestClassifier(n_estimators=100, n_jobs=-1)
+        model = RandomForestClassifier(n_estimators=100, n_jobs=-1)
         model.fit(train_X,train_y)
 
         with open("model.pkl", "wb") as file:
