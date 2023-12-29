@@ -23,7 +23,7 @@ def predict():
     inputQuery5 = request.form["query5"]
 
     data = [[inputQuery1, inputQuery2, inputQuery3, inputQuery4, inputQuery5]]
-    # 22.53, 102.1, 0.09947, 0.2225, 0.2041: sample for Cancer detection
+    # >>> 22.53, 102.1, 0.09947, 0.2225, 0.2041: sample for Cancer detection
 
     try:
         model = pickle.load(open("model.pkl", "rb"))
@@ -31,7 +31,6 @@ def predict():
     except:
         dataset_url = "https://raw.githubusercontent.com/apogiatzis/breast-cancer-azure-ml-notebook/master/breast-cancer-data.csv"
         df = pd.read_csv(dataset_url)
-
         print("Get the model from url")
 
         df['diagnosis']=df['diagnosis'].map({'M':1,'B':0})
@@ -43,7 +42,7 @@ def predict():
         train_X = train[features]
         train_y = train.diagnosis
 
-        model=RandomForestClassifier(n_estimators=100, n_jobs=-1)
+        model = RandomForestClassifier(n_estimators=100, n_jobs=-1)
         model.fit(train_X,train_y)
 
         with open("model.pkl", "wb") as file:
