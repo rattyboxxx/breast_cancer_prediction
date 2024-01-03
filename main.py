@@ -73,10 +73,9 @@ def predict():
 
     if single == 1:
         o1 = "The patient is diagnosed with Breast Cancer"
-        o2 = "Confidence: {}".format(probability * 100)
     else:
         o1 = "The patient is not diagnosed with Breast Cancer"
-        o2 = "Congrats! You are very healthy!"
+    o2 = "Confidence: {}%".format(probability * 100)
 
     return render_template(
         "home.html",
@@ -91,4 +90,4 @@ def predict():
 
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
