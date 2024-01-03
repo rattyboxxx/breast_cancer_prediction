@@ -49,10 +49,10 @@ def predict():
             pickle.dump(model, file)
 
         # Test the model if you want, acc ~ 92%
-        # test_X = test[features]
-        # test_y = test.diagnosis
-        # prediction = model.predict(test_X)
-        # acc = metrics.accuracy_score(prediction, test_y)
+        test_X = test[features]
+        test_y = test.diagnosis
+        prediction = model.predict(test_X)
+        print(f"Accuracy: {metrics.accuracy_score(prediction, test_y)}")
 
     # Create the pandas DataFrame
     new_df = pd.DataFrame(
